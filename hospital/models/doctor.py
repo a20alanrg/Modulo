@@ -14,5 +14,5 @@ class HospitalDoctor(models.Model):
     patients=fields.Integer(string="Patients", compute="patients_count")
 
     def patients_count(self):
-        count=self.env["hospital.patient"].search_count([("doctor_id","=",self.id)])
+        count=self.env["hospital.patient"].search_count([("doctor.id","=",self.id)])
         self.patients=count
